@@ -25,6 +25,25 @@
     <pre>{
   "word": "mar"
 }</pre>    
+
+ <h2>Endpoints v2</h2>
+    <ul>
+      <li>
+           <li>
+        <strong><a href="/api/v2/languages" target="_blank">GET /api/v2/languages</a></strong><br>
+        Devuelve la lista de idiomas disponibles.
+      </li>
+        <strong><a href="/api/v1/words" target="_blank">GET /api/v2/words</a></strong><br>
+        Devuelve una palabra aleatoria.
+      </li>
+      <li>
+        <strong><a href="/api/v2/words?length=5&lang=it" target="_blank">GET /api/v2/words?length=5&lang=it</a></strong><br>
+        Devuelve una palabra aleatoria de <code>3</code> letras (entre 3 y 13) y en el idioma seleccionado (de la lista de idiomas disponibles).
+      </li>
+    </ul>
+    <h3>Ejemplo de respuesta v2</h3>
+    <pre>{
+  "word": "cuore",}</pre> 
   </main>
 </body>
 </html>
