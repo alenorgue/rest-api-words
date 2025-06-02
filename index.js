@@ -79,6 +79,17 @@ if (lang && !languages.includes(lang)) {
 try {
   let wordsFilePath = path.join(__dirname, 'data', 'words.json');
 
+
+   let apiUrl = 'https://random-word-api.herokuapp.com/word';
+
+    if (length) apiUrl += `?length=${length}&`;
+    if (lang) apiUrl += `lang=${lang}&`;
+    const response = await nodeFetch(apiUrl);
+    const data = await response.json();
+
+    if (!data || data.length === 0) {
+      return res.status(404).json({ error: "No se encontró palabra" });
+    }
   // Guardar palabra nueva si no existe ya en words.json
   if (data && data.length > 0) {
     const newWord = data[0];
@@ -91,17 +102,6 @@ try {
       }
     }
   }
-   let apiUrl = 'https://random-word-api.herokuapp.com/word?';
-
-    if (length) apiUrl += `length=${length}&`;
-    if (lang) apiUrl += `lang=${lang}&`;
-    const response = await nodeFetch(apiUrl);
-    const data = await response.json();
-
-    if (!data || data.length === 0) {
-      return res.status(404).json({ error: "No se encontró palabra" });
-    }
-
     res.json({ word: lodash.sample(data) }); 
   } catch (error) {
     console.error(error.message);
