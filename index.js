@@ -30,10 +30,10 @@ app.get('/api/v1/words', (req, res) => {
     if (filteredWords.length === 0) {
       return res.status(404).json({ error: 'No hay palabras con esa longitud' });
     }
-    return res.json(word);
+    res.json({ words });
   }
 
-  res.json(word);
+  res.json({ words });
 });
 // Iteración 3
 
